@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Mortgage Repayment Calculator</title>
+</head>
+<body>
+  <main class="page">
+    <div class="wrapper">
+      <section class="calculator">
+        <div class="card card--form">
+          <div class="calculator__header">
+            <h1>Mortgage Calculator</h1>
+            <button type="button" class="calculator__clear" id="clearBtn">Clear All</button>
+          </div>
+
+          <form id="mortgageForm" novalidate>
+            <div class="form-field">
+              <label for="amount">Mortgage Amount</label>
+              <div class="input-group">
+                <span class="input-group__prefix">£</span>
+                <input type="number" id="amount" name="amount" placeholder="300,000" min="0" step="0.01" aria-describedby="amountError">
+              </div>
+              <p class="error-message" id="amountError" aria-live="polite"></p>
+            </div>
+
+            <div class="field-row">
+              <div class="form-field">
+                <label for="term">Mortgage Term</label>
+                <div class="input-group">
+                  <input type="number" id="term" name="term" placeholder="25" min="1" step="1" aria-describedby="termError">
+                  <span class="input-group__suffix">years</span>
+                </div>
+                <p class="error-message" id="termError" aria-live="polite"></p>
+              </div>
+              <div class="form-field">
+                <label for="rate">Interest Rate</label>
+                <div class="input-group">
+                  <input type="number" id="rate" name="rate" placeholder="5.25" min="0.01" step="0.01" aria-describedby="rateError">
+                  <span class="input-group__suffix">%</span>
+                </div>
+                <p class="error-message" id="rateError" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <fieldset class="radio-group" aria-describedby="typeError">
+              <legend>Mortgage Type</legend>
+              <label class="radio-button">
+                <input type="radio" name="mortgageType" value="repayment" checked>
+                <span>Repayment</span>
+              </label>
+              <label class="radio-button">
+                <input type="radio" name="mortgageType" value="interest-only">
+                <span>Interest Only</span>
+              </label>
+              <p class="error-message" id="typeError" aria-live="polite"></p>
+            </fieldset>
+
+            <button type="submit" class="btn btn--primary">
+              <img src="./assets/images/icon-calculator.svg" alt="Calculator icon" width="20" height="20" aria-hidden="true">
+              Calculate Repayments
+            </button>
+          </form>
+        </div>
+
+        <div class="card card--results">
+          <div class="results__empty" id="emptyResult">
+            <img src="./assets/images/illustration-empty.svg" alt="Illustration of a calculator and document">
+            <div>
+              <h2>Results shown here</h2>
+              <p>Complete the form and click calculate repayments to see what your monthly repayments would be.</p>
+            </div>
+          </div>
+
+          <div class="results__panel results--hidden" id="resultCard">
+            <div>
+              <h2>Your results</h2>
+              <p>Your results are shown below based on the information you provided. To adjust the results, edit the form and click calculate repayments again.</p>
+            </div>
+            <div class="results-card">
+              <div class="result-block">
+                <span class="result-block__title">Your monthly repayments</span>
+                <span class="result-block__value" id="monthlyAmount">0.00</span>
+              </div>
+              <div class="result-block">
+                <span class="result-block__title">Total you'll repay over the term</span>
+                <span class="result-block__value" id="totalAmount">0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by <a href="https://www.github.com/batgev">Batong Gevaise</a>.
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
